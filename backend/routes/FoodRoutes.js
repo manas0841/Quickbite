@@ -3,15 +3,9 @@ const { addFood, listFood, removeFood } = require("../controllers/FoodController
 const multer = require("multer");
 const router = express.Router();
 
-// Image Storage Engine
-const storage = multer.diskStorage({
-    destination : "uploads",
-    filename : (req, file, cb) => {
-        return cb(null, `${Date.now()}${file.originalname}`);
-    }
-});
-
-const upload = multer({storage : storage});
+// Image Storage Engine - Use memory storage for Vercel/Cloudinary
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
 router.post("/add", upload.single("image"), addFood);
 router.get("/list", listFood);

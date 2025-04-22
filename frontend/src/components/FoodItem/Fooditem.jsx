@@ -26,7 +26,7 @@ const Fooditem = ({ id, name, price, description, image, category, ratingStars }
     <>
       <div className="food-item" onClick={openPopUp}>
         <div className="food-item-image-container">
-          <img className="food-item-image" src={url + "/images/" + image} alt="" />
+        <img className="food-item-image" src={image} alt={name} />
           {!cartItems[id] ? (
             <img
               className="add"

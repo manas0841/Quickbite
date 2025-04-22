@@ -55,7 +55,7 @@ const NavBar = () => {
       </ul>
 
       <div className="navbar-right">
-        <i className="fa-solid fa-magnifying-glass"></i>
+        
         <div className="navbar-search-icon">
           <Link to="/cart">
             <i className="fa-solid fa-cart-shopping"></i>
