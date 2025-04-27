@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Status Update - QuickBite</title>
+    <style>
+      body {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        background-color: #f7f7f7;
+        margin: 0;
+        padding: 0;
+        color: #333;
+      }
+
+      .email-container {
+        background-color: #ffffff;
+        padding: 40px;
+        margin: 30px auto;
+        border-radius: 10px;
+        max-width: 700px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 15px;
+      }
+
+      p {
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 10px;
+      }
+
+      .status {
+        font-weight: bold;
+        color: #4CAF50;
+        font-size: 18px;
+      }
+
+      .order-details {
+        margin-top: 25px;
+        font-size: 16px;
+      }
+
+      .order-details h3 {
+        font-size: 20px;
+        color: #333;
+        margin-bottom: 15px;
+      }
+
+      .order-details ul {
+        list-style-type: none;
+        padding-left: 0;
+      }
+
+      .order-details li {
+        font-size: 16px;
+        margin-bottom: 10px;
+        color: #555;
+      }
+
+      .order-summary {
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        padding: 15px;
+        margin-top: 20px;
+        font-size: 16px;
+      }
+
+      .order-summary p {
+        margin: 0;
+        font-weight: bold;
+        color: #333;
+      }
+
+      .footer1 {
+        margin-top: 30px;
+        text-align: center;
+        font-size: 14px;
+        color: #aaa;
+        line-height: 1.6;
+      }
+
+      .footer1 a {
+        color: #4CAF50;
+        text-decoration: none;
+      }
+
+      .btn {
+        background-color: #4CAF50;
+        color: #fff;
+        padding: 12px 20px;
+        font-size: 16px;
+        text-decoration: none;
+        border-radius: 5px;
+        display: inline-block;
+        margin-top: 20px;
+      }
+
+      .btn:hover {
+        background-color: #45a049;
+      }
+
+      .highlight {
+        color: #4CAF50;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="email-container">
+      <h2>Hello {{firstName}},</h2>
+      <p>
+        We’re excited to inform you that your order <strong>#{{orderId}}</strong>
+        has been updated! Below are the latest details:
+      </p>
+      <p>
+        Current Status: <span class="status">{{orderStatus}}</span>
+      </p>
+
+      <div class="order-details">
+        <h3>Order Details</h3>
+        <ul>
+          {{#each items}}
+          <li>
+            <strong>{{this.name}}</strong> — Quantity: {{this.quantity}}
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+
+      <div class="order-summary">
+        <p>Total Amount: <span class="highlight">${{amount}}</span></p>
+        <p>Estimated Delivery: <span class="highlight">{{estimatedDelivery}}</span></p>
+      </div>
+
+      <p>If you have any questions or need further assistance, feel free to reach out to our dedicated support team. We're here to help!</p>
+
+      <p>
+        Thank you for choosing QuickBite! We look forward to serving you again soon.
+      </p>
+
+      <a href="https://quickbite-eta.vercel.app/" class="btn">Contact Support</a>
+
+      <div class="footer1">
+        <p>&copy; {{year}} QuickBite. All rights reserved.</p>
+
+
+      </div>
+    </div>
+  </body>
+</html>
