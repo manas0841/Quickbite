@@ -11,8 +11,9 @@ const Orders = ({ url }) => {
     try {
       const response = await axios.get(`${url}/api/order/list`);
       if (response.data.success) {
-        setOrders(response.data.data);
-        const initialStatus = response.data.data.reduce((acc, order, index) => {
+        let sortedOrders = response.data.data.sort((a, b) => new Date(b.date) - new Date(a.date)); // Sort by date, latest first
+        setOrders(sortedOrders);
+        const initialStatus = sortedOrders.reduce((acc, order, index) => {
           acc[index] =
             localStorage.getItem(`orderStatus-${order._id}`) ||
             order.status ||
@@ -149,9 +150,12 @@ const Orders = ({ url }) => {
 
                       <p className="order-item-phone">{order.address.phone}</p>
                     </div>
-                    <p className="time-bold">{formattedTime}</p> 
+                    <p className="time-bold">{formattedTime}</p>
                     <p className="details">Items: {order.items.length}</p>
-                    <p className="details">Amount : <span className="amount-color">{order.amount}</span></p>
+                    <p className="details">
+                      Amount :{" "}
+                      <span className="amount-color">{order.amount}</span>
+                    </p>
                     <select
                       value={orderStatus[orderIndex] || "Food Processing"}
                       onChange={(e) =>
