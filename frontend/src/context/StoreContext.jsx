@@ -9,7 +9,7 @@ const StoreContextProvider = (props) => {
     const [token, setToken] = useState("");
     const [food_list, setFoodList] = useState([]);
     const navigate = useNavigate(); 
-    const url = process.env.REACT_APP_API_BASE_URL;
+    const url = import.meta.env.VITE_API_URL || "http://localhost:4000";
 
 
     const redirectToLogin = () => {

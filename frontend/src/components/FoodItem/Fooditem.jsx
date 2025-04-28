@@ -14,7 +14,7 @@ const Fooditem = ({ id, name, price, description, image, category, ratingStars }
       name,
       price,
       description,
-      image: url + "/images/" + image,
+      image: image,
       category,
       ratingStars,
     });
