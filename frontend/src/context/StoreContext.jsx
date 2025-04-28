@@ -9,7 +9,7 @@ const StoreContextProvider = (props) => {
     const [token, setToken] = useState("");
     const [food_list, setFoodList] = useState([]);
     const navigate = useNavigate(); 
-    const url = import.meta.env.VITE_API_URL || "http://localhost:4000";
+    const url = import.meta.env.VITE_API_URL || "https://quickbite-backend-ssl6.onrender.com";
 
 
     const redirectToLogin = () => {

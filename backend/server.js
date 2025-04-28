@@ -13,7 +13,10 @@ require("dotenv").config();
 
 connectDB();
 
-app.use(cors());
+const corsOptions = {
+    origin: '*', // Allow all origins (not recommended for production)
+  };
+  
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
