@@ -8,11 +8,11 @@ import { StoreContext } from '../../context/StoreContext';
 
 const Otp = () => {
     const [otp, setOtp] = useState("");
-    const [spiner,setSpinner] = useState(false);
+    const [spiner, setSpinner] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
 
-    const { token, setToken } = useContext(StoreContext)
+    const { url, token, setToken } = useContext(StoreContext); // Get URL from context
 
     const LoginUser = async (e) => {
         e.preventDefault();
@@ -32,12 +32,12 @@ const Otp = () => {
             const data = { email, password, otp };  // Send email, password, and OTP to the backend
 
             try {
-                const response = await axios.post(`http://localhost:4000/api/user/otp`, data);  
+                const response = await axios.post(`${url}/api/user/otp`, data); // Use URL from context
                 if (response.data.success) {
                     localStorage.setItem("userdbtoken", response.data.userToken);  
                     toast.success(response.data.message);
                     setToken(response.data.token);
-                    localStorage.setItem("token", response.data.token)
+                    localStorage.setItem("token", response.data.token);
                     
                     setTimeout(() => {
                         navigate("/");
@@ -65,10 +65,9 @@ const Otp = () => {
                         required 
                     />
                 </div>
-                <button onClick={LoginUser}>Verify
-                {
-                spiner ? <span><Spinner animation="border" /></span>:""
-                }
+                <button onClick={LoginUser}>
+                    Verify
+                    {spiner && <span><Spinner animation="border" /></span>}
                 </button>
             </form>
             <ToastContainer />

@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './SignUp.css';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import Spinner from 'react-bootstrap/Spinner';
 import axios from 'axios';
+import { StoreContext } from '../../context/StoreContext'; // Import the context
 
 const SignUp = () => {
   const [passhow, setPassShow] = useState(false);
-  const [spiner,setSpinner] = useState(false);
+  const [spiner, setSpinner] = useState(false);
   const navigate = useNavigate();
+  const { url } = useContext(StoreContext);  // Use URL from context
   const [inputdata, setInputdata] = useState({
     name: "",
     email: "",
@@ -38,7 +40,7 @@ const SignUp = () => {
     } else {
       setSpinner(true);
       try {
-        const response = await axios.post(`http://localhost:4000/api/user/register`, inputdata);  // API call to register
+        const response = await axios.post(`${url}/api/user/register`, inputdata);  // Use URL from context
 
         if (response.status === 200) {
           setInputdata({ name: "", email: "", password: "" });
@@ -71,12 +73,13 @@ const SignUp = () => {
             </div>
           </div>
         </div>
-        <button type="submit">Create account
-        {
-        spiner ? <span><Spinner animation="border" /></span>:""
-        }
+        <button type="submit">
+          Create account
+          {spiner ? <span><Spinner animation="border" /></span> : ""}
         </button>
-        <p className='signup-redirect'>Already have an account? <span onClick={() => navigate('/login')}>Login</span></p>
+        <p className='signup-redirect'>
+          Already have an account? <span onClick={() => navigate('/login')}>Login</span>
+        </p>
       </form>
       <ToastContainer />
     </div>
