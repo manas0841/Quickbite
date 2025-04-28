@@ -13,15 +13,7 @@ require("dotenv").config();
 
 connectDB();
 
-
-app.use(cors({
-    origin: [
-      "https://quickbite-admin-frontend-for-vercel.vercel.app",
-      "https://quickbite-main-frontend.vercel.app"
-    ],
-    credentials: true
-  }));
-  
+app.use(cors());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
