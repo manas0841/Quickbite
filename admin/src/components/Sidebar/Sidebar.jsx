@@ -10,12 +10,12 @@ const Sidebar = () => {
 
         <NavLink to='/add' className={({ isActive }) => isActive ? 'sidebar-option active' : 'sidebar-option'}>
           <img src={assets.add_icon} alt="" />
-          <p>Add Itmes</p>
+          <p>Add Items</p>
         </NavLink>
 
         <NavLink to='/list' className={({ isActive }) => isActive ? 'sidebar-option active' : 'sidebar-option'}>
           <img src={assets.order_icon} alt="" />
-          <p>List Itmes</p>
+          <p>List Items</p>
         </NavLink>
 
         <NavLink to='/orders' className={({ isActive }) => isActive ? 'sidebar-option active' : 'sidebar-option'}>
