@@ -1,3 +1,6 @@
+ link for app - https://quickbite-main-frontend.vercel.app/
+Link for admin - https://quickbite-admin-frontend-for-vercel.vercel.app/
+
 MONGO_URL = "Mongo Atlas"
 SECRET_KEY = "Any_Random_Key"
 EMAIL = "example@gmail.com"
